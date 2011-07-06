@@ -2,3 +2,6 @@
 // Techinox Commercial License
 //
 // @author Armagan Amcalar <armagan@tart.com.tr>
+
+goog.provide('twitter.Profile');
+goog.require('tart');

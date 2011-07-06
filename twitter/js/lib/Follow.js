@@ -3,7 +3,10 @@
 //
 // @author Armagan Amcalar <armagan@tart.com.tr>
 
-var Follow = function(followerId, followingId) {
+goog.provide('twitter.Follow');
+goog.require('tart');
+
+twitter.Follow = function(followerId, followingId) {
     this.id = tart.getUId();
     this.followerId = followerId;
     this.followingId = followingId;

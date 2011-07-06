@@ -3,13 +3,16 @@
 //
 // @author Armagan Amcalar <armagan@tart.com.tr>
 
+goog.provide('twitter.Tweet');
+goog.require('tart');
+
 /**
  * Tweet value object
  * @param {Number} userId User id that this tweet belongs to.
  * @param {string} body Body of the tweet.
  * @return {boolean} Returns if a successful tweet is created.
  */
-var Tweet = function(userId, body){
+twitter.Tweet = function(userId, body){
     this.id = tart.getUId();
     this.userId = userId;
     this.time = tart.randomTime();

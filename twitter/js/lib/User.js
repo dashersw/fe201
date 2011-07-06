@@ -3,7 +3,10 @@
 //
 // @author Armagan Amcalar <armagan@tart.com.tr>
 
-var User = function(username, password, email) {
+goog.provide('twitter.User');
+goog.require('tart');
+
+twitter.User = function(username, password, email) {
     this.id = tart.getUId();
     this.username = username;
     this.password = password;
