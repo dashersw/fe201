@@ -13,6 +13,7 @@
     <script type="text/javascript" src="js/models/ProfileModel.js"></script>
     <script type="text/javascript" src="js/models/DirectMessageModel.js"></script>
     <script type="text/javascript" src="js/models/TweetModel.js"></script>
+    <script type="text/javascript" src="js/models/FollowManager.js"></script>
     <script type="text/javascript">
         var userModel = new UserModel(),
                 tweetModel = new TweetModel(),
@@ -47,10 +48,12 @@
                     }
                 ];
 
+        localStorage.clear();
+        
         for (var i = 0, l = userData.length; i < l; i++) {
             var user = userData[i], size = Math.round(Math.random() * 5) + 2;
 
-            userModel.createUser(user.username, user.password, user.email);
+            user = userModel.createUser(user.username, user.password, user.email);
 
             for (var j = 0; j < size; j++) {
                 tweetModel.postTweet(user, tart.LoremIpsum());
