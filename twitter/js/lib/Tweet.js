@@ -5,7 +5,7 @@
 
 /**
  * Tweet value object
- * @param {string} userId User id that this tweet belongs to.
+ * @param {Number} userId User id that this tweet belongs to.
  * @param {string} body Body of the tweet.
  * @return {boolean} Returns if a successful tweet is created.
  */
