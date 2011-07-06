@@ -3,11 +3,42 @@
 //
 // @author Armagan Amcalar <armagan@tart.com.tr>
 
-var TweetModel = function() {
+
+/**
+ * @fileoverview Tweet Model class that deals with posting and fetching tweets.
+ */
+
+goog.provide('twitter.TweetModel');
+goog.require('twitter.Tweet');
+
+/**
+ * Tweet Model class. Has utility functions that sends a tweet or returns tweets of users.
+ *
+ * @constructor
+ */
+twitter.TweetModel = function() {
 
 };
 
-TweetModel.prototype.postTweet = function(user, body) {
-    var tweet = new Tweet(user, body);
+/**
+ * Posts a tweet
+ * 
+ * @param {User} user User that posts the tweet
+ * @param {string} body Tweet body
+ */
+twitter.TweetModel.prototype.postTweet = function(user, body) {
+    var tweet = new twitter.Tweet(user.id, body);
     localStorage.setObject(tweet.id, tweet);
+}
+
+twitter.TweetModel.prototype.getTweetsByUserId = function(userId) {
+    var tweets = [];
+
+    for (var tweet in localStorage) {
+        tweet = localStorage.getObject(tweet);
+        if (tweet && tweet.body && tweet.userId && tweet.userId == userId) {
+            tweets.push(tweet);
+        }
+    }
+    return tweets;
 }
