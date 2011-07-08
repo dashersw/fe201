@@ -10,12 +10,13 @@
         goog.require('twitter.FollowManager');
         goog.require('twitter.TweetModel');
     </script>
+    <script type="text/javascript">
         $(function() {
             var $body = $("body"),
-                    userModel = new UserModel(),
+                    userModel = new twitter.UserModel(),
                     session = localStorage.getObject("session"),
-                    followManager = new FollowManager(),
-                    tweetModel = new TweetModel();
+                    followManager = new twitter.FollowManager(),
+                    tweetModel = new twitter.TweetModel();
 
             var tweetTemplate = function(tweet, user) {
                 return "<div class='tweet' id='" + tweet.id + "'>" +
@@ -59,7 +60,7 @@
                         .append($error);
 
                 $button.click(function() {
-                    var userModel = new UserModel();
+                    var userModel = new twitter.UserModel();
                     var loggedIn = userModel.login($username.val(), $password.val());
                     if (!loggedIn) {
                         $error.html("Error. No user found.");
