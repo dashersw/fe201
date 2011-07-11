@@ -11,7 +11,7 @@ twitter.DirectMessageModel = function() {
 
 };
 
-twitter.DirectMessageModel.prototype.sendDirectMessage = function(from, to, body){
+twitter.DirectMessageModel.prototype.sendDirectMessage = function(from, to, body) {
     var directMessage = new twitter.DirectMessage(from.id, to.id, body);
-    localStorage.setObject(directMessage.id, directMessage);
-}
+    twitter.localStorage.set(directMessage.id, directMessage);
+};

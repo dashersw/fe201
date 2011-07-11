@@ -11,6 +11,8 @@
 goog.provide('twitter.TweetModel');
 goog.require('twitter.Tweet');
 
+
+
 /**
  * Tweet Model class. Has utility functions that sends a tweet or returns tweets of users.
  *
@@ -20,25 +22,26 @@ twitter.TweetModel = function() {
 
 };
 
+
 /**
  * Posts a tweet
- * 
- * @param {User} user User that posts the tweet
- * @param {string} body Tweet body
+ *
+ * @param {twitter.User} user User that posts the tweet.
+ * @param {string} body Tweet body.
  */
 twitter.TweetModel.prototype.postTweet = function(user, body) {
     var tweet = new twitter.Tweet(user.id, body);
-    localStorage.setObject(tweet.id, tweet);
-}
+    twitter.localStorage.set(tweet.id, tweet);
+};
 
 twitter.TweetModel.prototype.getTweetsByUserId = function(userId) {
     var tweets = [];
 
     for (var tweet in localStorage) {
-        tweet = localStorage.getObject(tweet);
+        tweet = twitter.localStorage.get(tweet);
         if (tweet && tweet.body && tweet.userId && tweet.userId == userId) {
             tweets.push(tweet);
         }
     }
     return tweets;
-}
+};

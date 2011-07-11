@@ -13,23 +13,23 @@ twitter.FollowManager = function() {
 
 twitter.FollowManager.prototype.createFollow = function(follower, following) {
     var follow = new twitter.Follow(follower.id, following.id);
-    localStorage.setObject(follow.id, follow);
-}
+    twitter.localStorage.set(follow.id, follow);
+};
 
 twitter.FollowManager.prototype.getFollowingByUserId = function(userId) {
     var followedUsers = [],
         userModel = new twitter.UserModel();
 
     for (var follow in localStorage) {
-        follow = localStorage.getObject(follow);
+        follow = twitter.localStorage.get(follow);
         if (follow && follow.followerId == userId) {
             var followedUser = userModel.getUserById(follow.followingId);
             followedUsers.push(followedUser);
         }
     }
     return followedUsers;
-}
+};
 
 twitter.FollowManager.prototype.getFollowersByUserId = function(userId) {
 
-}
+};
