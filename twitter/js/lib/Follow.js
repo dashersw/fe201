@@ -6,8 +6,13 @@
 goog.provide('twitter.Follow');
 goog.require('tart');
 
+
+
+/**
+ * @constructor
+ */
 twitter.Follow = function(followerId, followingId) {
-    this.id = tart.getUId();
+    this.id = tart.getUid();
     this.followerId = followerId;
     this.followingId = followingId;
-}
+};

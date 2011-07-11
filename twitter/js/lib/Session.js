@@ -6,7 +6,12 @@
 goog.provide('twitter.Session');
 goog.require('tart');
 
+
+
+/**
+ * @constructor
+ */
 twitter.Session = function(userId) {
-    this.id = tart.getUId();
+    this.id = tart.getUid();
     this.userId = userId;
-}
+};

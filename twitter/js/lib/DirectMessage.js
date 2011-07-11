@@ -5,11 +5,17 @@
 
 goog.provide('twitter.DirectMessage');
 goog.require('tart');
+goog.require('tart.date');
 
+
+
+/**
+ * @constructor
+ */
 twitter.DirectMessage = function(fromId, toId, body) {
-    this.id = tart.getUId();
+    this.id = tart.getUid();
     this.fromId = fromId;
     this.toId = toId;
     this.body = body;
-    this.time = tart.randomTime();
-}
+    this.time = tart.date.randomTime();
+};
