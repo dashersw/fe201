@@ -3,76 +3,14 @@
 <head>
     <title>FE201</title>
     <script type="text/javascript" src="js/third_party/jquery-1.6.2.js"></script>
-    <script type="text/javascript" src="js/third_party/tartJS/third_party/goog/goog/base.js"></script>
-    <script type="text/javascript" src="js/deps.js"></script>
+    <!--<script type="text/javascript" src="js/third_party/tartJS/third_party/goog/goog/base.js"></script>-->
+    <!--<script type="text/javascript" src="js/deps.js"></script>-->
+    <!--<script type="text/javascript">-->
+        <!--goog.require('twitter');-->
+    <!--</script>-->
+    <script type="text/javascript" src="js/compiled/compiled.js"></script>
     <script type="text/javascript">
-        goog.require('twitter.UserModel');
-        goog.require('twitter.FollowManager');
-        goog.require('twitter.TweetModel');
-    </script>
-    <script type="text/javascript">
-        $(function() {
-            var $body = $("body"),
-                    userModel = new twitter.UserModel(),
-                    session = localStorage.getObject("session"),
-                    followManager = new twitter.FollowManager(),
-                    tweetModel = new twitter.TweetModel();
-
-            var tweetTemplate = function(tweet, user) {
-                return "<div class='tweet' id='" + tweet.id + "'>" +
-                       tweet.body + " by <span class='user' id='" + tweet.userId + "'>"+
-                       user.username+"</span></div>";
-            };
-
-            var printTweets = function(tweets) {
-                for (var i = 0, l = tweets.length; i < l; i++) {
-                    var tweet = tweets[i],
-                            user = userModel.getUserById(tweet.userId),
-                            $tweet = $(tweetTemplate(tweet, user));
-                    $body.append($tweet);
-                }
-            };
-
-
-            if (session) {
-                var user = userModel.getUserById(session.userId);
-                $body.append("<h1>Logged In</h1>");
-                var following = followManager.getFollowingByUserId(user.id);
-
-                var tweets = [];
-
-                for (var i = 0, l = following.length; i < l; i++) {
-                    var user = following[i];
-                    var userTweets = tweetModel.getTweetsByUserId(user.id);
-
-                    printTweets(userTweets);
-                }
-            }
-            else {
-                var $username = $("<input id='text' type='text'>");
-                var $password = $("<input id='password' type='password'>");
-                var $button = $("<div>Log in</div>");
-                var $error = $("<div class='error'></div>")
-                $body.append("<h1>You need to log in.</h1>")
-                        .append($username)
-                        .append($password)
-                        .append($button)
-                        .append($error);
-
-                $button.click(function() {
-                    var userModel = new twitter.UserModel();
-                    var loggedIn = userModel.login($username.val(), $password.val());
-                    if (!loggedIn) {
-                        $error.html("Error. No user found.");
-                    }
-                    else {
-                        window.location.reload();
-                    }
-                })
-            }
-        })
-
-
+        twitter.index();
     </script>
 </head>
 <body>
